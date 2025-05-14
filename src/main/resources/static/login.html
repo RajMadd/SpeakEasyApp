@@ -90,7 +90,7 @@
       const input = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      fetch('http://localhost:8080/users/login', {
+      fetch('/users/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ input, password })

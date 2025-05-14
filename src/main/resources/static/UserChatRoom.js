@@ -10,7 +10,7 @@ function addMember(){
 
     const userId= document.getElementById('userId1').value.trim();
     const roomId= sessionStorage.getItem('RoomId');
-    fetch(`http://localhost:8080/userchatroom/${userId}/${roomId}`, {
+    fetch(`/userchatroom/${userId}/${roomId}`, {
         method: 'POST',
         headers:{'Content-Type': 'application/json'}
     })
@@ -45,7 +45,7 @@ function closeModal2(){
 function removeMember(){
     const userId= document.getElementById('userId2').value.trim();
     const roomId= sessionStorage.getItem('RoomId');
-    fetch(`http://localhost:8080/userchatroom/${userId}/${roomId}`, {
+    fetch(`/userchatroom/${userId}/${roomId}`, {
         method: 'DELETE',
     })
     .then( res =>{
@@ -66,7 +66,7 @@ function ExistingMember(){
     document.getElementById('userChatRoomExistingModal').style.display= 'flex';
     const list=document.getElementById('list');
     const roomId= sessionStorage.getItem('RoomId');
-    fetch(`http://localhost:8080/userchatroom/chatroom/${roomId}`,{
+    fetch(`/userchatroom/chatroom/${roomId}`,{
         method:'GET'
     })
     .then( res =>{

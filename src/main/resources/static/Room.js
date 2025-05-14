@@ -19,7 +19,7 @@ function openModal1() {
   //Convert isGroupChat to boolean
   const groupChatBool = groupChat.toLowerCase() === 'true';
 
-  fetch('http://localhost:8080/chatrooms', {
+  fetch('/chatrooms', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -62,7 +62,7 @@ function openModal1() {
     return;
   }
 
-  fetch(`http://localhost:8080/chatrooms/${chatRoomId}`, {
+  fetch(`/chatrooms/${chatRoomId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -101,7 +101,7 @@ function openModal3() {
     return;
   }
 
-  fetch(`http://localhost:8080/chatrooms/${chatRoomId}`, {
+  fetch(`/chatrooms/${chatRoomId}`, {
     method: 'DELETE'
   })
   .then(res => {
@@ -135,7 +135,7 @@ function openChatRoom() {
     return;
   }
 
-  fetch(`http://localhost:8080/chatrooms/${chatRoomId}`, {
+  fetch(`/chatrooms/${chatRoomId}`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' }
   })

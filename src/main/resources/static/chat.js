@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
   
     if (!groupOrPrivate) {
-      const receiverId = localStorage.getItem('privateReceiver');
+      const receiverId = sessionStorage.getItem('privateReceiver');
       if (!receiverId) return alert("Receiver ID missing.");
       payload.receiver = { id: receiverId };
     }

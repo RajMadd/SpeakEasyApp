@@ -25,7 +25,7 @@ function UpdateUser() {
     if (newpwd) updateData.password = newpwd;
     updateData.oldpwd = oldpwd;
 
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`/users/${userId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateData)
@@ -60,7 +60,7 @@ function DeleteAccount() {
       return;
     }
   
-    fetch(`http://localhost:8080/users/${userId}`, {
+    fetch(`/users/${userId}`, {
       method: 'DELETE'
     })
     .then(res => {

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('Logout').addEventListener('click', () => {
-    fetch('http://localhost:8080/users/logout') // adjust path as needed
+    fetch('/users/logout') // adjust path as needed
       .then(res => {
         if (res.ok) {
           sessionStorage.removeItem('login');
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Sending payload:", payload);
 
   
-    fetch('http://localhost:8080/messages', {
+    fetch('/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -132,7 +132,7 @@ const id=document.getElementById('SearchBox').value.trim();
 
 if(id!==""){
 
-fetch(`http://localhost:8080/users/${id}`,{
+fetch(`/users/${id}`,{
   method:'Get',
   headers: {
     'Content-Type': 'application/json'
@@ -162,7 +162,7 @@ fetch(`http://localhost:8080/users/${id}`,{
 });
 }
 else{
-  fetch('http://localhost:8080/users', {
+  fetch('/users', {
     method: 'GET',
   })
   .then(res => {
@@ -262,7 +262,7 @@ window.addEventListener('load', ()=>{
   const senderId=sessionStorage.getItem("UserId");
   const roomId=sessionStorage.getItem('RoomId');
 
-    fetch(`http://localhost:8080/messages/${roomId}`,{
+    fetch(`/messages/${roomId}`,{
       method:'GET'
     })
     .then(res=>{

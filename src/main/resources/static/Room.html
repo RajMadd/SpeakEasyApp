@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Chat Room</title>
+  <link rel="stylesheet" href="Room.css">
+</head>
+<div >
+  <div id="Home"> <a href="index.html"> 🏠︎ Home</a></div>
+<div id="RoomContainer">
+<!-- Trigger Button -->
+<button onclick="openModal1()" id="Create">Create Chat Room</button>
+<button onclick="openModal4()" id="Open">Open Chat Room</button>
+<button onclick="openModal2()" id="Update">Update Chat Room</button>
+<button onclick="openModal3()" id="Delete">Delete Chat Room</button>
+</div>
+</div>
+<!-- Modal  -->
+<div class="modal" id="chatRoomCreateModal">
+  <div class="modal-content">
+    <h2>Create Chat Room</h2>
+    <input type="text" id="chatRoomName1" placeholder="Enter Room Name" required />
+    <input type="text" id="isGroupChat1" placeholder="It will be group chat. true or false?" required />
+    <input type="text" id="messages1" placeholder="Enter null" required />
+    <br>
+    <button onclick="createChatRoom()">Submit</button>
+    <br><br>
+    <button onclick="closeModal1()">Cancel</button>
+  </div>
+</div>
+
+<div class="modal" id="chatRoomOpenModal">
+  <div class="modal-content">
+    <h2>Open Chat Room</h2>
+    <input type="text" id="chatRoomId4" placeholder="Enter Room Id" required />
+    <br>
+    <button onclick="openChatRoom()">Submit</button>
+    <br><br>
+    <button onclick="closeModal4()">Cancel</button>
+  </div>
+</div>
+
+<div class="modal" id="chatRoomUpdateModal">
+    <div class="modal-content">
+      <h2>Update Chat Room</h2>
+      <input type="text" id="chatRoomId2" placeholder="Enter Room Id" required />
+      <input type="text" id="chatRoomName2" placeholder="Enter Room Name" required />
+      <input type="text" id="isGroupChat2" placeholder="It will be group chat. true or false?" required />
+      <input type="text" id="messages2" placeholder="Enter null" required />
+      <br>
+      <button onclick="updateChatRoom()">Submit</button>
+      <br><br>
+      <button onclick="closeModal2()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Modal  -->
+<div class="modal" id="chatRoomDeleteModal">
+  <div class="modal-content">
+    <h2>Delete Chat Room</h2>
+    <input type="text" id="chatRoomId3" placeholder="Enter Room Id" required />
+    <br>
+    <button onclick="deleteChatRoom()">Submit</button>
+    <br><br>
+    <button onclick="closeModal3()">Cancel</button>
+  </div>
+</div>
+<script src="chat.js"></script>
+<script src="Room.js"></script>
+
+</body>
+</html>

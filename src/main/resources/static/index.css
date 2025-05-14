@@ -1,0 +1,115 @@
+body{
+    background: linear-gradient(to right , black, grey);
+}
+#Options{
+    display: flex;
+    background:linear-gradient(to right, orange, red);
+}
+.settings-container {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+  }
+  
+#settings-btn {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  
+#settings-panel {
+    
+    top: 30px;
+    right: 0;
+    width: 200px;
+    background-color: yellowgreen;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  li{
+    margin-left: 2px;
+    list-style-type: disc;
+  }
+  
+  #settings-panel ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  
+  #settings-panel li {
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  
+
+#EntryContainer{
+    margin-left: auto;
+    width: 100vw;
+}
+
+
+#Entry{
+    display: flex;
+    justify-content: right;
+    
+    height: fit-content;
+    margin-left: auto;
+  }
+
+
+button{
+    background-color: #007BFF;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 15px;
+    border-radius: 4px;
+}
+
+#Welcome{
+  height: 92vh;
+  background-image: url(img/Frontend_Background.jpeg);
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: aliceblue;
+}  
+
+a{
+    text-decoration: none;
+}
+
+
+.chatbutton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.Chat{
+    border-radius: 50%;
+    border-width: 5px;
+    border-color: orange;
+    height: 100px;
+    width: 100px;
+    background: linear-gradient(to right , yellow, orange);
+    color: blue;
+    font-size: large;
+}
+
+

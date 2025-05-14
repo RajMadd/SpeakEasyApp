@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #43e97b, #38f9d7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-box {
+      background: white;
+      margin-top: 5px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    .form-box h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    input {
+      background: #f2f2f2;
+    }
+    button {
+      background-color: #43e97b;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2ccc8b;
+    }
+    .form-box p {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .form-box a {
+      color: #43e97b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div>
+  <div id="Home"> <a href="index.html"> 🏠︎ Home</a></div>
+  <div class="form-box">
+    <h2>Signup</h2>
+    <form id="signupForm">
+      <input type="text" id="username" placeholder="Enter unique username" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" id="submit">Signup</button>
+    </form>
+    
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+  </div>
+  <script>
+  // signup.js
+
+  if(sessionStorage.getItem("login") ==="true"){
+      alert("You are already logged in!");
+    window.location.href = "chatpage.html"; // Redirect to chat
+     }
+
+  document.getElementById('signupForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+  
+    fetch('http://localhost:8080/users/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: "include",
+      body: JSON.stringify({ username, email, password })
+    })
+    .then( response =>{
+      if (response.ok) { return response.json();
+        throw new Error('Sign-up failed');
+    }
+
+  })
+    .then(data => {
+        alert("Your user id is:-" + data.id);
+        window.location.href = 'login.html'; // Redirect to login
+      
+      
+    })
+    .then( res=>{
+      alert('Sign-up successful!');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Sign-up failed. Something went wrong.');
+    });
+
+  });
+  
+</script>
+</body>
+</html>

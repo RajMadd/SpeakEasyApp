@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="User.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="updateUser()" id="UpdateUser">Update User</button>
+    <button onclick="deleteAccount()" id="DeleteUser">Delete Account</button>
+
+<!-- Modal  -->
+<div class="modal" id="UserUpdate">
+  <div class="modal-content">
+    <h2>Update Profile</h2>
+    <input type="text" id="userId1" placeholder="Enter user id" required />
+    <input type="text" id="userName1" placeholder="Enter New User Name (if applicable)" />
+    <input type="text" id="email1" placeholder="Enter new email(if applicable)" />
+    <input type="text" id="oldpwd1" placeholder="Enter current password" required />
+    <input type="text" id="newpwd1" placeholder="Enter new password (if applicable)" />
+    <br>
+    <button onclick="updateUser()">Submit</button>
+    <br><br>
+    <button onclick="closeModal1()">Cancel</button>
+  </div>
+</div> 
+
+ <!-- Modal  -->
+ <div class="modal" id="UserDelete">
+  <div class="modal-content">
+    <h2>Delete Account</h2>
+    <input type="text" id="userId2" placeholder="Enter user id" required />
+    <br>
+    <button onclick="deleteAccount()">Submit</button>
+    <br><br>
+    <button onclick="closeModal2()">Cancel</button>
+  </div>
+</div>  
+
+    <script src="User.js"></script>
+</body>
+</html>

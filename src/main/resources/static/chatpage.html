@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chatpagestyle.css">
+    <title>Chatpage</title>
+</head>
+<body>
+    <div id="Main">
+        <div id="SideBar">
+            <div id="SideText">SpeakEasy</div>
+            <div id="UserID"></div>
+            <div class="SearchBox">
+                <input id="SearchBox" type="text" placeholder="  Search User(s)..">
+                <button onclick="search()">🔎</button>
+            </div>
+            <div id="Home"> <a href="index.html"> 🏠︎ Home</a></div>
+            <div id="Logout"> <a href="#">[→ Logout</a></div>
+            <div id="ChatRoom"><a href="Room.html">ChatRoom Section</a></div>
+            <!-- <button onclick="openModal()"><a href="Room.html">Create Chat Room</a></button> -->
+            <!-- <div id="UsersMainContainer"> -->
+             
+             <div id="UsersContainer">
+                <button onclick="AddMember()" class="Options">+ Add New Member</button>
+                <button onclick="RemoveMember()" class="Options">- Remove A Member</button>
+                <button onclick="ExistingMember()" class="Options">@Existing Members</button>
+                <div id="Users">
+                    ChatRoom Status-
+                 </div>
+                   
+             </div> 
+             <button onclick="closeChatRoom()" id="closebutton">Close ChatRoom</button>
+        </div>
+
+
+        <div id="FullChat">
+            <div id="Head">ChatBox</div>
+            <div id="box"></div>
+            <div id="SearchContainer">
+                <div>
+                    <input id="SearchBar"type="text" placeholder=" Enter your message...">
+                <select id="emojiSelector">
+  <option value="😊">Emoji</option>
+  <option value="😊">😊</option>
+  <option value="😀">😀</option>
+  <option value="😍">😍</option>
+  <option value="😢">😢</option>
+  <option value="😡">😡</option>
+</select>
+
+                    <button id="sendbtn" type="submit"><a>Send</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal  -->
+<div class="modal" id="userChatRoomAddModal">
+    <div class="modal-content">
+      <h2>Add New Member</h2>
+      <input type="text" id="userId1" placeholder="Enter User Id" required />
+      <br>
+      <button onclick="addMember()">Add</button>
+      <br><br>
+      <button onclick="closeModal1()">Close</button>
+    </div>
+  </div>
+
+<!-- Modal  -->
+<div class="modal" id="userChatRoomRemoveModal">
+    <div class="modal-content">
+      <h2>Remove A Member</h2>
+      <input type="text" id="userId2" placeholder="Enter User Id." required />
+      <br>
+      <button onclick="removeMember()">Remove</button>
+      <br><br>
+      <button onclick="closeModal2()">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="userChatRoomExistingModal">
+    <div class="modal-content">
+        <div id="list">
+            <h2>Existing members are:-</h2>
+        </div>
+      <button onclick="closeModal3()">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="PrintUserList">
+    <div class="modal-content">
+        <div id="list1">
+            <h2>Available Users are:-</h2>
+        </div>
+      <button onclick="closeModal4()">Close</button>
+    </div>
+  </div>
+
+  <div class="modal" id="PrintSingleUserList">
+    <div class="modal-content">
+        <div id="list2">
+            <h2>Searched Users is:-</h2>
+        </div>
+      <button onclick="closeModal5()">Close</button>
+    </div>
+  </div>
+
+ 
+
+        <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+     
+    <script>
+  const emojiSelector = document.getElementById('emojiSelector');
+  const messageInput = document.getElementById('SearchBar');
+
+  emojiSelector.addEventListener('change', () => {
+    const emoji = emojiSelector.value;
+    if (emoji) {
+      messageInput.value += emoji;
+      emojiSelector.selectedIndex = 0; // reset selection
+    }
+  });
+</script>
+
+
+    <script src="chat.js"></script>
+    <script src="Room.js"></script> 
+        <script src="index.js"></script>
+        <script src="WebSocket.js"></script>
+    <script src="UserChatRoom.js"></script>
+</body>
+</html>

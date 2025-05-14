@@ -21,10 +21,28 @@ function addMember(){
     .then( data=>{
         alert("New member added successfully.");
         const privateuserId=sessionStorage.getItem('UserId');
-        if(userId!=privateuserId && !sessionStorage.getItem('GroupOrPrivate')){
-            localStorage.setItem("privateReceiver", userId);
-        
-        }
+        if(!sessionStorage.getItem('GroupOrPrivate')){
+            {
+                fetch(`http://localhost:8080/userchatroom/chatroom/${roomId}`,{
+        method:'GET'
+    })
+    .then( res1 =>{
+        if(res.ok) return res.json();
+        throw new Error("Failed to show members");
+    })
+    .then( data1 =>{
+        forEach(data1 =>{
+            if(userId && data1.id!==userId){
+            sessionStorage.setItem("privateReceiver", data1.id);
+            }
+        })
+    })
+    .catch(
+        err => {
+        alert("Error: " + err.message);
+        })   
+    }
+            
         closeModal1();
     })
     .catch(err =>{

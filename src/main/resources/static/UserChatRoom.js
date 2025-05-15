@@ -6,11 +6,14 @@ function closeModal1(){
     document.getElementById('userChatRoomAddModal').style.display= 'none';
 }
 
-function addMember(){
 
+            
+
+function addMember(){
+    const user_Id=sessionStorage.getItem('UserId');
     const userId= document.getElementById('userId1').value.trim();
     const roomId= sessionStorage.getItem('RoomId');
-    fetch(`/userchatroom/${userId}/${roomId}`, {
+    fetch(`http://localhost:8080/userchatroom/${userId}/${roomId}`, {
         method: 'POST',
         headers:{'Content-Type': 'application/json'}
     })
@@ -21,28 +24,26 @@ function addMember(){
     .then( data=>{
         alert("New member added successfully.");
         const privateuserId=sessionStorage.getItem('UserId');
-        if(!sessionStorage.getItem('GroupOrPrivate')){
+        if(sessionStorage.getItem('Private'))
             {
-                fetch(`http://localhost:8080/userchatroom/chatroom/${roomId}`,{
-        method:'GET'
-    })
-    .then( res1 =>{
-        if(res.ok) return res.json();
-        throw new Error("Failed to show members");
-    })
-    .then( data1 =>{
-        forEach(data1 =>{
-            if(userId && data1.id!==userId){
-            sessionStorage.setItem("privateReceiver", data1.id);
-            }
-        })
-    })
-    .catch(
-        err => {
-        alert("Error: " + err.message);
-        })   
-    }
+                fetch(`/userchatroom/receiver/${userId}/${roomId}`,{
+                 method:'GET'
+                  })
+                  .then( res1 =>{
+                     if(res1.ok) return res1.json();
+                    })
+                  .then( data1 =>{
+                        alert("member  "+ data1);
+                      if(userId && data1===user_Id){
+                      sessionStorage.setItem("privateReceiver", userId);
+                      }
+                    })
+                   .catch(
+                      err => {
+                      alert("Error: " + err.message);
+                    })
             
+            }
         closeModal1();
     })
     .catch(err =>{

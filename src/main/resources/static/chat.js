@@ -197,6 +197,7 @@ else{
     document.getElementById("UserID").innerText= "User Id- " + sessionStorage.getItem('UserId');
     if(sessionStorage.getItem('isChatRoomOpen')){
       const roomname=sessionStorage.getItem('ChatRoomName');
+      const roomID=sessionStorage.getItem('RoomId');
       const status=sessionStorage.getItem('isChatRoomopen');
       const groupOrPrivate=sessionStorage.getItem('GroupOrPrivate');
       if (roomname) {
@@ -224,7 +225,7 @@ else{
         const newDiv = document.createElement('div');
         newDiv.style.fontSize='20px';
         newDiv.style.color='blue';
-        newDiv.textContent = "chat room is open.";
+        newDiv.textContent = "chat room" +" Id: "+ roomID + " is open";
         document.getElementById("UsersContainer").appendChild(newDiv);
       }  
       else{

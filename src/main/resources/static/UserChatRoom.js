@@ -33,8 +33,8 @@ function addMember(){
                      if(res1.ok) return res1.json();
                     })
                   .then( data1 =>{
-                      if(userId && data1===user_Id){
-                      sessionStorage.setItem("privateReceiver", userId);
+                      if(data1 && data1 !== user_Id){
+                      sessionStorage.setItem("privateReceiver", data1);
                       }
                     })
                    .catch(

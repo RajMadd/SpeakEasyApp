@@ -156,8 +156,10 @@ function openChatRoom() {
     if(groupOrPrivate)
       {
         sessionStorage.setItem("GroupOrPrivate", "true");
+        sessionStorage.removeItem('Private');
 
       }else{
+        sessionStorage.setItem("Private", "true");
         sessionStorage.removeItem('GroupOrPrivate');
       }
     openChatPage();

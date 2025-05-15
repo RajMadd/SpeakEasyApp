@@ -13,7 +13,7 @@ function addMember(){
     const user_Id=sessionStorage.getItem('UserId');
     const userId= document.getElementById('userId1').value.trim();
     const roomId= sessionStorage.getItem('RoomId');
-    fetch(`http://localhost:8080/userchatroom/${userId}/${roomId}`, {
+    fetch(`/userchatroom/${userId}/${roomId}`, {
         method: 'POST',
         headers:{'Content-Type': 'application/json'}
     })
@@ -33,7 +33,6 @@ function addMember(){
                      if(res1.ok) return res1.json();
                     })
                   .then( data1 =>{
-                        alert("member  "+ data1);
                       if(userId && data1===user_Id){
                       sessionStorage.setItem("privateReceiver", userId);
                       }

@@ -46,13 +46,6 @@ input{
     border-color: black;
 }
 
-/* #UsersContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 2px;
-    
-} */
 
 #FullChat{
     background-color: #075E54;
@@ -83,7 +76,7 @@ input{
 }
 
 #SearchBar{
-    width: 69vw;
+    width: 66vw;
     height: 1cm;
     margin-left: 5px;
     margin-top: 1px;
@@ -95,8 +88,6 @@ input{
 }
 
 button, #emojiSelector{
-    /* padding: 10px 20px; */
-     /* background-color: #25D366;  Green */
     font-size: 16px;
     cursor: pointer; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.web.dao.ChatRoomRepository;
+import com.springboot.web.dao.UserChatRoomRepository;
 import com.springboot.web.entities.ChatRoomEntity;
 import com.springboot.web.entities.UserChatRoomEntity;
 import com.springboot.web.entities.UserEntity;
@@ -26,6 +28,11 @@ public class UserChatRoomController {
 	@Autowired
     private UserChatRoomService userChatRoomService;
 	
+	@Autowired
+	private UserChatRoomRepository userChatRoomRepository;
+	
+	@Autowired
+	private ChatRoomRepository chatRoomRepository;
 
 	
     // Add a user to a chat room
@@ -65,4 +72,29 @@ public class UserChatRoomController {
         List<UserEntity> users = userChatRoomService.getUsersInChatRoom(chatRoomId);
         return users.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(users);
     }
+    
+    
+    @GetMapping("/receiver/{userId}/{chatRoomId}")
+    public ResponseEntity<Long> getOtherUserInPrivateChat(
+            @PathVariable Long userId, 
+            @PathVariable Long chatRoomId) {
+
+        ChatRoomEntity chatRoom = chatRoomRepository.findById(chatRoomId)
+                .orElseThrow(() -> new RuntimeException("Chat Room not found"));
+
+        if (chatRoom.isGroupChat()) {
+            return ResponseEntity.badRequest().build(); // Not applicable for group chats
+        }
+
+        
+		List<UserChatRoomEntity> members = userChatRoomRepository.findByChatRoom(chatRoom);
+        for (UserChatRoomEntity member : members) {
+            if (!member.getUser().getId().equals(userId)) {
+                return ResponseEntity.ok(member.getUser().getId());
+            }
+        }
+
+        return ResponseEntity.notFound().build(); // Only one user in the room so far
+    }
+
 }
